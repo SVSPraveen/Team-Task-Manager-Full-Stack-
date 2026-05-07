@@ -79,11 +79,6 @@ if os.getenv("ENVIRONMENT") == "production":
         allowed_hosts=[os.getenv("ALLOWED_HOSTS", "*.railway.app")]
     )
 
-# HTTPS redirect for production
-if os.getenv("ENVIRONMENT") == "production":
-    from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
-    app.add_middleware(HTTPSRedirectMiddleware)
-
 app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(tasks.router)
